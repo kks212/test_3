@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/65f501c8da.js" crossorigin="anonymous"></script>
+   <script defer src="js/3d.js"></script>
+    <title>Document</title>
+<style>
+    /*
+    전체 랩은 100%, position : fixed, 배경에 동양상 넣기
+    rotate -> position : absoulte, 화면 정가운데로 보내기, 애니메이션 적용.
+
+    8개 상자(article, box) -> position : absoulte, color 다 다르게
+    */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    #wrap {width: 100%; height: 100%;
+           position: fixed; left: 0; top: 0;
+          perspective: 1300px;}
+
+    #wrap>video {width: 100%; height: 100%; 
+                 object-fit: cover;
+                 opacity: 0.5;
+                 position: fixed;}
+
+    #rotate {width: 600px; height: 800px;
+
+             position: absolute; left: 50%; top: 50%;
+             margin-left: -300px; margin-top: -400px;
+             transform-style: preserve-3d;
+             animation: circle 40s linear infinite;}
+
+@keyframes circle {
+    form {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+
+    article {width: 100%; height: 100%;
+    position: absolute; left: 0; top: 0;
+    backface-visibility: hidden;
+}
+
+    .box1 {background: rgba(255, 255, 255, 0.2); 
+           transform: rotateY(0deg) translateZ(-764px);}
+    .box2 {background: rgba(255, 255, 255, 0.2); 
+           transform: rotateY(45deg) translateZ(-764px);}
+    .box3 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(90deg) translateZ(-764px);}   
+    .box4 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(135deg) translateZ(-764px);}
+    .box5 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(180deg) translateZ(-764px);}
+    .box6 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(225deg) translateZ(-764px);}
+    .box7 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(270deg) translateZ(-764px);}
+
+    .box8 {background: rgba(255, 255, 255, 0.2); 
+        transform: rotateY(315deg) translateZ(-764px);}
+
+/*
+팀: 8개의 상자가 rotate를 중심으로 둥글게 돌아야 함.
+360 % 8개 : 45도 Y축으로 회전값
+600*8 /2 /3.14 =  -764  z축으로 이동값
+*/
+
+.inner {width: 100%; height: 100%;
+         }
+.box1 .inner>div {width: 250px; height: 250px;
+            padding: 10px; margin: 10px;
+            background-color: rgba(225, 225, 225, 0.1);
+            float: left;
+            color: white;
+            text-align: center;
+            }
+.box1 .inner>div>p {
+              font-size: 100px;
+             }
+.box1 .inner>div:hover {transform: scale(1.2);
+                  text-shadow: 0px 0px 10px aqua;}
+.box1 .inner>h1 {position: absolute; left: 0; top: 50px; 
+           opacity: 0; color: white;}
+           .box1 .inner:hover h1{
+                 top: -50px; opacity: 1; transition: 1.5s;}
+</style>
+
+</head>
+<body>
+    <div id="wrap">
+        <video src="img/visual.mp4" loop autoplay muted></video>
+
+        <div id="rotate">
+            <article class="box1">
+                <div class="inner">
+                <h1>Co Company</h1>
+                    <div>
+                        <p><i class="fab fa-android"></i></p>
+                        <h2>Android</h2>
+                    </div>
+                    <div>
+                        <p><i class="fab fa-apple"></i></p>
+                        <h2>Apple</h2>
+                    </div>
+                    <div>
+                        <p><i class="fab fa-facebook-square"></i></p>
+                        <h2>Facebook</h2>
+                    </div>
+                    <div>
+                        <p><i class="fab fa-youtube"></i></p>
+                        <h2>Youtube</h2>
+                    </div>
+                    <div>
+                        <p><i class="fab fa-google"></i></p>
+                        <h2>Google</h2>
+                    </div>
+                    <div>
+                        <p><i class="fab fa-twitter-square"></i></p>
+                        <h2>Twitter</h2>
+                    </div>
+                </div>
+            </article>
+            <article class="box2"></article>
+            <article class="box3"></article>
+            <article class="box4"></article>
+            <article class="box5"></article>
+            <article class="box6"></article>
+            <article class="box7"></article>
+            <article class="box8"></article>
+        </div>
+    </div>
+
+
+</body>
+</html>
